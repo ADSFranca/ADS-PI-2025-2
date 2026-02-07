@@ -1,0 +1,9 @@
+Tabela Usuário 
+CREATE TABLE usuarios ( 
+    id SERIAL PRIMARY KEY, 
+    nome VARCHAR(30) NOT NULL, 
+    setor VARCHAR(50) NOT NULL, 
+    nivel INT NOT NULL, 
+    cpf VARCHAR(16) NOT NULL, 
+    senha VARCHAR(8) NOT NULL, 
+    );

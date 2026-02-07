@@ -1,0 +1,174 @@
+# 🩺 Voluntários da Saúde — Backend Java (Spring Boot 3)
+
+Este é o backend oficial desenvolvido para a ONG **Voluntários da Saúde**, criado com foco em **segurança**, **boas práticas REST**, **arquitetura limpa**, **autenticação JWT**, **upload de imagens**, **painel administrativo**, **envio de e-mails** e **integração com Cloudinary**.
+
+Este projeto foi feito para uso **real**, em produção, atendendo voluntários, doadores e equipe administrativa da ONG.
+
+---
+
+## 📦 Tecnologias utilizadas
+
+- **Java 17**
+- **Spring Boot 3.5**
+  - Spring Web
+  - Spring Security (JWT)
+  - Spring Data JPA
+  - Jakarta Validation
+- **PostgreSQL / MySQL**
+- **Cloudinary (armazenamento de imagens)**
+- **Docker**
+- **JavaMailSender (envio de e-mails)**
+- **SLF4J (logging estruturado)**
+- **Autenticação JWT com roles ADMIN/USER**
+
+---
+
+## 🧠 Objetivo do projeto
+
+Criar um backend completo para:
+
+- Gerenciar **Eventos** (CRUD + upload de imagens)
+- Gerenciar **Atualizações**
+- Receber formulários da landing page:
+  - Seja Voluntário
+  - Doação Mensal
+  - Fale Conosco
+- Sistema administrativo com permissão **ADMIN**
+- Autenticação JWT segura
+- Painel para envio de respostas via e-mail
+
+Este projeto atende **milhares de visitantes mensais** da ONG.
+
+---
+
+## 📁 Estrutura de pastas
+
+```bash
+src/
+├── main/
+│ ├── java/com/ong/api_backend/
+│ │ ├── controller/ 
+│ │ ├── service/ 
+│ │ ├── infra/security/
+│ │ ├── Exceptions/ 
+│ │ ├── repository/ 
+│ │ ├── Storage/ 
+│ │ ├── model/ 
+│ │ └── model/user/ 
+│ └── resources/
+│ ├── application.yml
+│ └── static/uploads/ 
+└── test/ 
+
+
+
+```
+
+---
+
+## 🔐 Autenticação
+
+A API usa **JWT** com:
+
+- Login `/auth/login`
+- Registro de usuários `/auth/register` (interno)
+- Claims:
+  - `sub` → login do usuário
+  - `role` → ADMIN / USER
+
+Exemplo de envio do token:
+
+Authorization: Bearer <seu_token_aqui>
+
+
+A área administrativa aceita apenas usuários com **ROLE_ADMIN**.
+
+---
+
+## 🔄 Endpoints implementados
+
+### 🔐 Login e autenticação
+| Método | Rota | Descrição |
+|--------|-------|------------|
+| POST | `/auth/login` | Autentica e retorna token JWT |
+| POST | `/auth/register` | Cria novo usuário (ADMIN) |
+
+---
+
+### 📍 Eventos (ADMIN)
+| Método | Rota | Descrição |
+|--------|-------|------------|
+| GET | `/api/gerencia/eventos` | Lista eventos (público) |
+| POST | `/api/gerencia/eventos` | Cria evento com imagem |
+| PUT | `/api/gerencia/eventos/{id}` | Atualiza evento |
+| DELETE | `/api/gerencia/eventos/{id}` | Deleta evento |
+
+---
+
+### 🔁 Atualizações (ADMIN)
+| Método | Rota | Descrição |
+|--------|-------|------------|
+| GET | `/api/gerencia/atualizacoes` | Lista últimas 3 atualizações |
+| POST | `/api/gerencia/atualizacoes` | Cria atualização |
+| PUT | `/api/gerencia/atualizacoes/{id}` | Atualiza |
+| DELETE | `/api/gerencia/atualizacoes/{id}` | Deleta |
+
+---
+
+### 🌐 Formulários Públicos
+
+| Método | Rota | Função |
+|--------|-------|---------|
+| POST | `/api/seja_voluntario` | Envia formulário de voluntariado |
+| POST | `/api/fale_conosco` | Envia mensagem |
+| POST | `/api/doacao_mensal` | Envia solicitação de doação |
+
+---
+
+### 📨 Painel de Administração — Envio de Resposta por Email
+| Método | Rota | Descrição |
+|--------|-------|------------|
+| GET | `/api/dashboard/formularios` | Lista todos os formulários recebidos |
+| POST | `/api/dashboard/email` | Envia resposta ao formulário |
+
+---
+
+## 🖼 Upload de imagens (Cloudinary)
+
+Uploads são enviados automaticamente para pastas:
+
+- `eventosImages/`
+- `atualizacoesImages/`
+
+E a API salva o `secure_url` retornado.
+
+---
+
+## 🚀 Como rodar o projeto
+
+### ✔ Com Docker (recomendado)
+
+```bash
+docker build -t ong-api .
+docker run -p 8080:8080 ong-api
+
+
+✔ Manualmente
+
+git clone https://github.com/seuusuario/ong-backend.git
+cd ong-backend
+mvn clean package
+java -jar target/app.jar
+
+
+```
+
+---
+## 👤 Desenvolvedor
+
+**Ryan Moscardini**  
+Estudante de Análise e Desenvolvimento de Sistemas - FATEC Franca  
+Desenvolvedor Backend 
+Contato: [LinkedIn](https://www.linkedin.com/in/ryan-moscardini-b7b6372ba) | [GitHub](https://github.com/ryanmosc)
+
+---

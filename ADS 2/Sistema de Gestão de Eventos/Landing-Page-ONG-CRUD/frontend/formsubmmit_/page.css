@@ -1,0 +1,425 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fff9e6;
+    color: #333;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.logo-background {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.logo-background img {
+    width: 300px;
+    height: auto;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    white-space: nowrap;
+    margin-bottom: 30px;
+}
+
+.headerTWO {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #d4a017;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.header p {
+    color: #5a5a5a;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.donation-form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f0e0a0;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #d4a017;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #f0e0a0;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    background-color: #fffcf0;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #d4a017;
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.donation-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.donation-option {
+    flex: 1 1 calc(20% - 10px);
+    min-width: 80px;
+}
+
+.donation-option input[type="radio"] {
+    display: none;
+}
+
+.donation-option label {
+    display: block;
+    padding: 10px;
+    background-color: #fff5d0;
+    border: 1px solid #f0e0a0;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #b08d10;
+}
+
+.donation-option input[type="radio"]:checked + label {
+    background-color: #d4a017;
+    color: white;
+    border-color: #d4a017;
+}
+
+.other-amount {
+    margin-top: 15px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.other-amount.active {
+    display: block;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit {
+    background-color: #d4a017;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #b08d10;
+}
+
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-cancel {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background-color: #c8c8c8;
+}
+
+.error-message {
+    color: #c23b3b;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: none;
+    font-weight: 500;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+.form-group.error input,
+.form-group.error textarea {
+    border-color: #c23b3b !important;
+    background-color: #fff8f8;
+}
+
+#amountError {
+    display: none;
+    margin-top: 10px;
+}
+
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 25px;
+    background-color: #d4f4d4;
+    color: #2e7d32;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #a5d6a7;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* PIX Section */
+.pix-section {
+    margin: 30px 0;
+    padding: 25px;
+    background-color: #fff5d0;
+    border-radius: 10px;
+    border: 1px solid #f0e0a0;
+}
+
+.pix-section h3 {
+    color: #d4a017;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.pix-details {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.pix-data {
+    flex: 1;
+}
+
+.pix-key {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 1.1rem;
+    margin: 10px 0;
+    border: 1px solid #f0e0a0;
+    word-break: break-all;
+}
+
+.btn-copy {
+    background-color: #d4a017;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-copy:hover {
+    background-color: #b08d10;
+}
+
+.pix-instructions {
+    margin-top: 20px;
+}
+
+.pix-instructions ol {
+    padding-left: 20px;
+}
+
+.pix-instructions li {
+    margin-bottom: 8px;
+}
+
+.pix-qr-code {
+    flex: 0 0 200px;
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #f0e0a0;
+}
+
+.qr-caption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #5a5a5a;
+}
+
+/* CORRIGIR ERROS VISUAIS */
+.error-message {
+    display: none;
+    color: #c23b3b;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.form-group.error .error-message {
+    display: block !important;
+}
+
+.form-group.error input,
+.form-group.error textarea {
+    border-color: #c23b3b !important;
+    background-color: #fff8f8;
+}
+
+#amountError {
+    display: none;
+    color: #c23b3b;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.other-amount {
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.other-amount.active {
+    display: block !important;
+}
+
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .donation-option {
+        flex: 1 1 calc(50% - 10px);
+    }
+    .container {
+        padding: 20px 10px;
+    }
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    .pix-details {
+        flex-direction: column;
+    }
+    .pix-qr-code {
+        margin-top: 20px;
+    }
+}
+
+/* === QR CODE ESTÁTICO RESPONSIVO === */
+.pix-qr-code {
+    flex: 0 0 200px;
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #f0e0a0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.qr-image {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 180px !important;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto;
+}
+
+.qr-caption {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #5a5a5a;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .pix-details {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .pix-qr-code {
+        flex: none;
+        width: 100%;
+        max-width: 180px;
+        padding: 12px;
+    }
+    .qr-image {
+        max-width: 150px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .pix-qr-code {
+        max-width: 150px;
+    }
+    .qr-image {
+        max-width: 130px !important;
+    }
+}

@@ -1,0 +1,7 @@
+Tabela Setor 
+CREATE TABLE pedidos ( 
+    id SERIAL PRIMARY KEY, 
+    nome VARCHAR(50) NOT NULL, 
+    qtde_usuario INT NOT NULL, 
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) 
+); 

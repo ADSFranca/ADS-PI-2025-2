@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juventude pelo Clima - Preservando o Futuro</title>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <style>
+        /* Reset e configurações básicas */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #436a4f;
+            --secondary-color: #38647d;
+            --accent-color: #436a4f;
+            --light-color: #e8f5e9;
+            --dark-color: #436a4f;
+            --text-color: #333;
+            --white: #fff;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header e Navegação */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+        }
+        
+        .btn-register {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 24px;
+            font-size: 1.1rem;
+        }
+        
+        /* Seções */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Eventos */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .event-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .event-image {
+            height: 180px;
+            background-color: var(--accent-color);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+        }
+        
+        .event-date {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-attend {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            width: 100%;
+            padding: 10px;
+        }
+        
+        /* Doações */
+        .donation-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .donation-option {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+        }
+        
+        .donation-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+        
+        .btn-donate {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 100%;
+            padding: 12px;
+        }
+        
+        .custom-donation {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .modal-title {
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+            }
+            
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 200px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span class="logo-icon"><img src="icon.png" width="60" height="60" alt="icon"></span>
+                <h1>Juventude pelo Clima</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#events">Eventos</a></li>
+                    <li><a href="https://linktr.ee/YouthforClimateFranca?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRleAOfRc1leHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAacQa1GZnDuxr7_mhzPaV6S-sOGBOjGevxbv9RastJ6GL6h2rApu9rsebd15OA_aem_cr-K5CU9IBQYiJUYDwUGyg">Doações</a></li>
+                    <li><a href="https://chat.whatsapp.com/GOB4wZkw8vo6AApYTTOzYf">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-login" id="loginBtn">Entrar</button>
+                <button class="btn btn-register" id="registerBtn">Cadastrar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Juntos pela preservação do nosso planeta</h2>
+            <p>A Juventude pelo Clima atua na conservação de ecossistemas, educação ambiental e promoção de práticas sustentáveis. Faça parte desta causa!</p>
+            <button class="btn btn-primary" id="joinBtn">Junte-se a nós</button>
+        </div>
+    </section>
+
+    <!-- Eventos -->
+    <section id="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>Próximos Eventos</h2>
+                <p>Participe das nossas atividades e faça a diferença</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image" style="background-image: url('imagem1.jfif');"></div>
+                    <div class="event-content">
+                        <div class="event-date">23 de Outubro, 2025</div>
+                        <h3 class="event-title">Venha conhecer o Juventude!</h3>
+                        <p>O juventude pelo Clima irá se apresentar no Aquário da Biblioteca da UNESP Franca. </p>
+                        <button class="btn btn-attend" data-event="1">Confirmar Presença</button>
+                    </div>
+                </div>
+            <div class="event-card">
+                    <div class="event-image" style="background-image: url('buritis.png');"></div>
+                    <div class="event-content">
+                        <div class="event-date">01 de Novembro, 2025</div>
+                        <h3 class="event-title">Mutirão de Plantio - Projeto Buritis</h3>
+                        <p>Ajude-nos a reintroduzir o buriti em áreas de nascentos e proteção ambiental em Franca. </p>
+                        <button class="btn btn-attend" data-event="2">Confirmar Presença</button>
+                    </div>
+                </div>    
+            <div class="event-card">
+                    <div class="event-image" style="background-image: url('imagem2.jpg');"></div>
+                    <div class="event-content">
+                        <div class="event-date">30 de Outubro, 2025</div>
+                        <h3 class="event-title">Clima nas Escolas - Esquadrão da COP</h3>
+                        <p>Apresentação do Juventude nas escolas</p>
+                        <button class="btn btn-attend" data-event="3">Confirmar Presença</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doações -->
+    <section id="donate">
+        <div class="container">
+            <div class="section-title">
+                <h2>Faça uma Doação</h2>
+                <p>Sua contribuição ajuda a financiar nossos projetos de preservação ambiental</p>
+            </div>
+            <div class="donation-options">
+                <div class="donation-option">
+                    <h3>Doação Básica</h3>
+                    <div class="donation-amount">R$ 30</div>
+                    <p>Projeto Buritis
+
+                    </p>
+                    <button class="btn btn-donate" data-amount="30">Doar Agora</button>
+                </div>
+                <div class="donation-option">
+                    <h3>Doação Intermediária</h3>
+                    <div class="donation-amount">R$ 50</div>
+                    <p>Projeto Cerrado Tropical
+
+                    </p>
+                    <button class="btn btn-donate" data-amount="50" >Doar Agora</button>
+                </div>
+                <div class="donation-option">
+                    <h3>Doação Avançada</h3>
+                    <div class="donation-amount">R$ 100</div>
+                    <p>Ajuda a financiar nossas ações de reflorestamento</p>
+                    <button class="btn btn-donate" data-amount="100">Doar Agora</button>
+                </div>
+            </div>
+            <div class="custom-donation">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">Ou doe qualquer valor</h3>
+                <div class="form-group">
+                    <label for="custom-amount">Valor (R$)</label>
+                    <input type="number" id="custom-amount" class="form-control" min="1" placeholder="Digite o valor">
+                </div>
+                <button class="btn btn-donate" id="custom-donate">Doar Valor Personalizado</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Juventude pelo Clima</h3>
+                    <p>Trabalhamos pela preservação ambiental e promoção de práticas sustentáveis para um futuro melhor.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="https://www.instagram.com/juventudepeloclimafranca/" class="social-icon">in</a>
+                        <a href="https://chat.whatsapp.com/GOB4wZkw8vo6AApYTTOzYf" class="social-icon">w</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre Nós</a></li>
+                        <li><a href="#events">Eventos</a></li>
+                        <li><a href="#donate">Doações</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>Email: contato@juventude</li>
+                        <li>Telefone: (16) xxxxxx</li>
+                        <li>Endereço: </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Juventude pelo Clima </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeLoginModal">&times;</span>
+            <h2 class="modal-title">Entrar na sua conta</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" class="form-control" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-login" id="cancelLogin">Cancelar</button>
+                    <button type="submit" class="btn btn-register">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Cadastro -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeRegisterModal">&times;</span>
+            <h2 class="modal-title">Criar uma conta</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Nome Completo</label>
+                    <input type="text" id="registerName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Senha</label>
+                    <input type="password" id="registerPassword" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirmar Senha</label>
+                    <input type="password" id="registerConfirmPassword" class="form-control" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-login" id="cancelRegister">Cancelar</button>
+                    <button type="submit" class="btn btn-register">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        //Elementos do DOM
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const closeRegisterModal = document.getElementById('closeRegisterModal');
+        const cancelLogin = document.getElementById('cancelLogin');
+        const cancelRegister = document.getElementById('cancelRegister');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const attendButtons = document.querySelectorAll('.btn-attend');
+        const donateButtons = document.querySelectorAll('.btn-donate');
+        const customDonateBtn = document.getElementById('custom-donate');
+        const joinBtn = document.getElementById('joinBtn');
+
+        //Abrir modais
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        registerBtn.addEventListener('click', () => {
+            registerModal.style.display = 'flex';
+        });
+
+        joinBtn.addEventListener('click', () => {
+            registerModal.style.display = 'flex';
+        });
+
+        //Fechar modais
+        closeLoginModal.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        closeRegisterModal.addEventListener('click', () => {
+            registerModal.style.display = 'none';
+        });
+
+        cancelLogin.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        cancelRegister.addEventListener('click', () => {
+            registerModal.style.display = 'none';
+        });
+
+        //Fechar modal ao clicar fora
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (e.target === registerModal) {
+                registerModal.style.display = 'none';
+            }
+        });
+
+        //Processar formulários
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            //Implementar a lógica de autenticação
+            alert(`Login realizado com: ${email}`);
+            loginModal.style.display = 'none';
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+            
+            //Implementar a lógica de cadastro
+            alert(`Cadastro realizado para: ${name} (${email})`);
+            registerModal.style.display = 'none';
+        });
+
+        //Confirmar presença em eventos
+        attendButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const eventId = button.getAttribute('data-event');
+                const eventTitle = button.closest('.event-card').querySelector('.event-title').textContent;
+                
+                //Verificar se o usuário está logado
+                //Implementar a verificação de autenticação
+                
+                alert(`Presença confirmada no evento: ${eventTitle}`);
+                button.textContent = 'Presença Confirmada';
+                button.disabled = true;
+                button.style.backgroundColor = '#9e9e9e';
+            });
+        });
+
+        //Processar doações
+        donateButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const amount = button.getAttribute('data-amount');
+                processDonation(amount);
+            });
+        });
+
+        customDonateBtn.addEventListener('click', () => {
+            const amount = document.getElementById('custom-amount').value;
+            if (!amount || amount < 1) {
+                alert('Por favor, insira um valor válido para doação.');
+                return;
+            }
+            processDonation(amount);
+        });
+
+        function processDonation(amount) {
+            //Verificar se o usuário está logado
+            //Implementar a verificação de autenticação
+            
+            alert(`Obrigado pela sua doação de R$ ${amount}!`);
+            
+            //Implementar a integração com o gateway de pagamento
+        }
+    </script>
+</body>
+
+</html>

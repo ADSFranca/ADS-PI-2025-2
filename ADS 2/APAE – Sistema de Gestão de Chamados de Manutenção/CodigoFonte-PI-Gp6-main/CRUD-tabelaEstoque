@@ -1,0 +1,9 @@
+Tabela Estoque 
+CREATE TABLE usuarios ( 
+id SERIAL PRIMARY KEY, 
+nome_produto VARCHAR(40) NOT NULL, 
+quantidade INT NOT NULL, 
+limite_max INT NOT NULL, 
+limite_min INT  NOT NULL, 
+senha VARCHAR(8) NOT NULL, 
+);
